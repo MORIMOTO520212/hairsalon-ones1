@@ -1,6 +1,10 @@
 {
-  "name": "nuxt-app",
+  "name": "hairsalon-ones1",
+  "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=20.x"
+  },
   "type": "module",
   "scripts": {
     "build": "nuxt build",
@@ -10,8 +14,13 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/emotion": "^1.0.2",
     "nuxt": "^3.10.3",
+    "nuxt-microcms-module": "^3.0.2",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1"
   }
 }
