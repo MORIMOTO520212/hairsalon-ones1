@@ -2,7 +2,7 @@
   <div :class="styles.navButton">
     <div :class="styles.wrapper">
       <img :class="styles.icon" :src="iconPath" />
-      <p :class="styles.text">{{ text }}</p>
+      <p :class="`${styles.text} text-xl`">{{ text }}</p>
     </div>
   </div>
 </template>

@@ -23,10 +23,6 @@ useSeoMeta({
 </script>
 
 <style>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 html {
   margin: 0;
 }

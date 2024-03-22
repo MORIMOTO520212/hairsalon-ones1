@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   devServer: {
     port: 3000,
   },
-  modules: ['nuxt-microcms-module', '@nuxtjs/emotion'],
+  modules: ['nuxt-microcms-module', '@nuxtjs/emotion', '@nuxtjs/tailwindcss'],
   microCMS: {
     serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
     apiKey: process.env.MICROCMS_API_KEY,
