@@ -21,3 +21,16 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 });
 </script>
+
+<style>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+</style>
