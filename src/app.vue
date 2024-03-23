@@ -25,6 +25,7 @@ useSeoMeta({
 <style>
 html {
   margin: 0;
+  background-color: #e5e0dd;
 }
 p {
   margin: 0;
