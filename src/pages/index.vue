@@ -48,7 +48,7 @@
     </div>
   </div>
   <!--concept-->
-  <div class="relative">
+  <div class="relative py-[80px]">
     <!--concept 1-->
     <div class="relative h-[555px] my-10">
       <img
@@ -102,12 +102,31 @@
         </div>
       </div>
     </div>
-
     <!--background images-->
     <img
       class="absolute top-[530px] lg:top-0 right-0 -z-10"
       src="/images/leaf2.svg"
     />
+  </div>
+  <!--gallery-->
+  <div class="bg-[#F1EAE5] px-[10px] sm:px-[50px] py-[80px]">
+    <SectionTitle value="Gallery" />
+    <div class="flex justify-center mt-[50px]">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-7">
+        <div
+          v-for="item in new Array(8)"
+          class="relative w-[150px] h-[150px] sm:w-[220px] sm:h-[220px]"
+        >
+          <span
+            class="absolute top-[8px] left-[8px] w-full h-full bg-[#B3907A]"
+          ></span>
+          <img
+            class="absolute top-0 left-0 w-full h-full"
+            src="/images/dummy/1.jpg"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
