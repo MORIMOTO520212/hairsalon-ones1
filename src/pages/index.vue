@@ -128,6 +128,52 @@
       </div>
     </div>
   </div>
+  <!--menu-->
+  <div class="py-[80px]">
+    <SectionTitle value="Menu" />
+    <div class="flex justify-center mt-[50px]">
+      <div class="inline-block">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <!--cut menu-->
+          <div class="max-w-[470px]">
+            <div class="bg-[#DED5D0] px-5 py-2 mb-5">
+              <h2 class="text-main" :style="{ fontFamily: 'Jost, sans-serif' }">
+                Cut Menu（シャンプー・ブロー付き）
+              </h2>
+            </div>
+            <div
+              v-for="item in new Array(4)"
+              class="flex justify-between text-main px-3 py-3"
+            >
+              <p class="inline-block text-sm sm:text-base">
+                パーマ（カット・シャンプー・ブロー・トリートメント付）
+              </p>
+              <span class="w-[50px]"></span>
+              <p class="inline-block text-sm sm:text-base">￥5,800</p>
+            </div>
+          </div>
+          <!--other menu-->
+          <div class="max-w-[470px]">
+            <div class="bg-[#DED5D0] px-5 py-2 mb-5">
+              <h2 class="text-main" :style="{ fontFamily: 'Jost, sans-serif' }">
+                Other Menu
+              </h2>
+            </div>
+            <div
+              v-for="item in new Array(4)"
+              class="flex justify-between text-main px-3 py-3"
+            >
+              <p class="inline-block text-sm sm:text-base">
+                パーマ（カット・シャンプー・ブロー・トリートメント付）
+              </p>
+              <span class="w-[50px]"></span>
+              <p class="inline-block text-sm sm:text-base">￥5,800</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
