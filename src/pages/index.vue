@@ -18,6 +18,97 @@
       <img class="h-[66px] scale-x-[-1]" src="/images/leaf1.svg" />
     </div>
   </div>
+  <!--blog & info-->
+  <div class="py-10">
+    <SectionTitle value="Blog" />
+    <div class="w-[250px] py-6 mx-auto">
+      <img class="w-[250px] h-[250px] object-cover" src="/images/dummy/1.jpg" />
+      <div>
+        <p
+          class="text-sm sm:text-base text-main py-2"
+          :style="{ fontFamily: 'Jost, sans-serif' }"
+        >
+          2024.03.02
+        </p>
+        <p class="text-sm sm:text-base text-main py-2">
+          ご新規のお客様へ。ご予約のとり方に関してのお知らせ
+        </p>
+      </div>
+      <div class="flex justify-center">
+        <a
+          href=""
+          class="inline-block border border-main text-main px-10 py-2 mt-3"
+          :style="{
+            fontFamily: 'Jost, sans-serif',
+            letterSpacing: '0.1em',
+          }"
+          >more</a
+        >
+      </div>
+    </div>
+  </div>
+  <!--concept-->
+  <div class="relative">
+    <!--concept 1-->
+    <div class="relative h-[555px] my-10">
+      <img
+        class="w-[95%] h-[270px] sm:w-[945px] sm:h-[495px] object-cover rounded-lg"
+        src="/images/DSC_0286.jpg"
+      />
+      <div
+        class="absolute bottom-0 right-0 lg:right-[10%] max-w-[550px] h-[300px] bg-[rgba(255,255,255,95%)] p-3 ms-4 sm:ms-0"
+      >
+        <div
+          class="w-full h-full border-2 border-dashed border-[#BA7B55] p-5"
+          :style="{ borderRadius: '10px' }"
+        >
+          <h2
+            class="inline-block text-3xl border-b border-main text-main"
+            :style="{ fontFamily: 'Jost, sans-serif' }"
+          >
+            Concept
+          </h2>
+          <div class="flex items-center h-full">
+            <p
+              class="text-[14px] md:text-[16px] text-main leading-9 tracking-[.25em]"
+            >
+              高天井の隠れ家サロン。女性スタイリストによる貸し切りの贅沢空間で、あなただけの時間を豊かな木の香りと共に、あなたの理想を叶えるプライベートサロンを体験できます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="h-[120px] md:h-[80px]"></div>
+    <!--concept 2-->
+    <div class="relative h-[510px] sm:h-[650px] my-10">
+      <img
+        class="absolute top-0 right-0 w-[80%] h-[270px] sm:w-[648px] sm:h-[490px] object-cover rounded-lg"
+        src="/images/DSC_0289.jpg"
+      />
+      <div
+        class="absolute bottom-0 left-0 lg:left-[10%] max-w-[550px] h-[300px] bg-[rgba(255,255,255,95%)] p-3 me-4 sm:me-0"
+      >
+        <div
+          class="w-full h-full border-2 border-dashed border-[#BA7B55] p-5"
+          :style="{ borderRadius: '10px' }"
+        >
+          <div class="flex items-center h-full">
+            <p
+              class="text-[14px] md:text-[16px] text-main leading-9 tracking-[.25em]"
+            >
+              確かな技術のベテランスタイリストがお客様に合わせたスタイルを提案し、初めての方にも安心してご利用いただけます。お気軽にお越しください。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--background images-->
+    <img
+      class="absolute top-[530px] lg:top-0 right-0 -z-10"
+      src="/images/leaf2.svg"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
