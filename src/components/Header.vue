@@ -16,11 +16,11 @@ onUpdated(() => {
     </div>
     <div class="flex flex-1 justify-end">
       <ul class="flex flex-1 justify-around items-center w-full max-w-[400px]">
-        <li class="text-main px-1"><a href="">Blog</a></li>
-        <li class="text-main px-1"><a href="">Concept</a></li>
-        <li class="text-main px-1"><a href="">Gallery</a></li>
-        <li class="text-main px-1"><a href="">Menu</a></li>
-        <li class="text-main px-1"><a href="">Stylist</a></li>
+        <li class="text-main px-1"><a href="#blog">Blog</a></li>
+        <li class="text-main px-1"><a href="#concept">Concept</a></li>
+        <li class="text-main px-1"><a href="#gallery">Gallery</a></li>
+        <li class="text-main px-1"><a href="#menu">Menu</a></li>
+        <li class="text-main px-1"><a href="#stylist">Stylist</a></li>
       </ul>
       <ul class="flex items-center">
         <li class="px-1"><HeaderButton type="phone" /></li>

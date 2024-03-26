@@ -5,5 +5,6 @@ const menuFucn = (state: boolean) => {};
 <template>
   <Header />
   <slot />
+  <ReservationBar />
   <Footer />
 </template>

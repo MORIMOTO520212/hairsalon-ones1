@@ -174,6 +174,134 @@
       </div>
     </div>
   </div>
+  <!--stylist-->
+  <div class="bg-[#F1EAE5] py-[80px]">
+    <SectionTitle value="Stylist" />
+    <div class="relative max-w-[800px] h-[700px] sm:h-[580px] mt-[50px] m-auto">
+      <img
+        class="absolute top-0 left-0 w-[350px] h-[350px] object-cover"
+        :style="{ borderRadius: '40px 10px 10px 10px' }"
+        src="/images/staff.jpg"
+      />
+      <div
+        class="absolute bottom-0 right-0 w-[360px] h-[380px] bg-[#F1EAE5] border border-[#503528] p-[25px]"
+        :style="{ borderRadius: '10px 40px 10px 10px' }"
+      >
+        <p
+          class="text-[#503528] tracking-[.18em]"
+          :style="{ fontFamily: 'Jost, sans-serif' }"
+        >
+          OWNER
+        </p>
+        <!--name-->
+        <div class="flex justify-between items-end mb-3">
+          <h3
+            class="inline-block text-[#503528] text-[22px] tracking-[.18em] font-bold"
+          >
+            鈴木 真理子
+          </h3>
+          <p
+            class="inline-block text-[#503528]"
+            :style="{ fontFamily: 'Jost, sans-serif' }"
+          >
+            [ MARIKO SUZUKI ]
+          </p>
+        </div>
+        <!--introduction-->
+        <p class="text-[#503528] tracking-[.18em] my-5">
+          スタイリスト歴　20年以上
+        </p>
+        <p class="text-[#503528] leading-[1.8rem] tracking-[.18em]">
+          美容室ワンズワンでは、お客様の髪への愛情を大切に、一人一人に合わせた丁寧なカウンセリングと高い技術力が評価されています。また、当店では店内の空間も楽しめるように設計しておりますので、お気軽にお越しください。
+        </p>
+      </div>
+    </div>
+  </div>
+  <!--access-->
+  <div class="py-[80px]">
+    <SectionTitle value="Access" />
+    <div
+      class="block md:flex max-w-[980px] border border-[#503528] p-[20px] mt-[40px] ms-3 me-3 md:ms-auto md:me-auto"
+    >
+      <div class="flex-initial md:w-[60%]">
+        <div class="flex py-3">
+          <h4
+            class="flex-initial w-[30%] md:w-[20%] text-main font-bold tracking-widest"
+            :style="{ fontFamily: 'Jost, sans-serif' }"
+          >
+            Address
+          </h4>
+          <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
+            〒194-0212 東京都町田市小山町９１６
+          </p>
+        </div>
+        <div class="flex py-3">
+          <h4
+            class="flex-initial w-[30%] md:w-[20%] text-main font-bold tracking-widest"
+            :style="{ fontFamily: 'Jost, sans-serif' }"
+          >
+            Tel
+          </h4>
+          <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
+            042-797-3990
+          </p>
+        </div>
+        <div class="flex py-3">
+          <h4
+            class="flex-initial w-[30%] md:w-[20%] text-main font-bold tracking-widest"
+            :style="{ fontFamily: 'Jost, sans-serif' }"
+          >
+            Email
+          </h4>
+          <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
+            caobirei97@gmail.com
+          </p>
+        </div>
+      </div>
+      <div class="flex-initial md:w-[40%]">
+        <div class="flex py-3">
+          <h4
+            class="flex-initial w-[30%] md:w-[20%] text-main font-bold tracking-widest"
+            :style="{ fontFamily: 'Jost, sans-serif' }"
+          >
+            Open
+          </h4>
+          <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
+            10:00〜19:00
+          </p>
+        </div>
+        <div class="flex py-3">
+          <h4
+            class="flex-initial w-[30%] md:w-[20%] text-main font-bold tracking-widest"
+            :style="{ fontFamily: 'Jost, sans-serif' }"
+          >
+            Close
+          </h4>
+          <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
+            火曜日定休
+          </p>
+        </div>
+        <div class="flex py-3">
+          <h4
+            class="flex-initial w-[30%] md:w-[20%] text-main font-bold tracking-widest"
+            :style="{ fontFamily: 'Jost, sans-serif' }"
+          >
+            Other
+          </h4>
+          <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
+            駐車場あり
+          </p>
+        </div>
+      </div>
+    </div>
+    <iframe
+      class="w-full max-w-[980px] h-[450px] mt-[50px] m-auto"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d337.4980913721744!2d139.37992323085234!3d35.59323419203196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f9e3d2363495413%3A0x3923680e12e5accb!2z576O5a655a6kT05FJ1MxIOODr-ODs-OCuuODr-ODs-maoOOCjOWutuODl-ODqeOCpOODmeODvOODiOOCteODreODs-WAi-WupA!5e0!3m2!1sja!2sjp!4v1711428514629!5m2!1sja!2sjp"
+      style="border: 0"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
 </template>
 
 <script setup lang="ts">
