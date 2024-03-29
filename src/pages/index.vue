@@ -18,8 +18,8 @@
       <img class="h-[66px] scale-x-[-1]" src="/images/leaf1.svg" />
     </div>
   </div>
-  <!--blog & info-->
-  <div class="py-10">
+  <!--blog-->
+  <div id="blog" class="py-10">
     <SectionTitle value="Blog" />
     <div class="w-[250px] py-6 mx-auto">
       <img class="w-[250px] h-[250px] object-cover" src="/images/dummy/1.jpg" />
@@ -36,7 +36,7 @@
       </div>
       <div class="flex justify-center">
         <a
-          href=""
+          href="/blog"
           class="inline-block border border-main text-main px-10 py-2 mt-3"
           :style="{
             fontFamily: 'Jost, sans-serif',
@@ -48,7 +48,7 @@
     </div>
   </div>
   <!--concept-->
-  <div class="relative py-[80px]">
+  <div id="concept" class="relative py-[80px]">
     <!--concept 1-->
     <div class="relative h-[555px] my-10">
       <img
@@ -109,7 +109,7 @@
     />
   </div>
   <!--gallery-->
-  <div class="bg-[#F1EAE5] px-[10px] sm:px-[50px] py-[80px]">
+  <div id="gallery" class="bg-[#F1EAE5] px-[10px] sm:px-[50px] py-[80px]">
     <SectionTitle value="Gallery" />
     <div class="flex justify-center mt-[50px]">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-7">
@@ -129,7 +129,7 @@
     </div>
   </div>
   <!--menu-->
-  <div class="py-[80px]">
+  <div id="menu" class="py-[80px]">
     <SectionTitle value="Menu" />
     <div class="flex justify-center mt-[50px]">
       <div class="inline-block">
@@ -175,7 +175,7 @@
     </div>
   </div>
   <!--stylist-->
-  <div class="bg-[#F1EAE5] py-[80px]">
+  <div id="stylist" class="bg-[#F1EAE5] py-[80px]">
     <SectionTitle value="Stylist" />
     <div class="relative max-w-[800px] h-[700px] sm:h-[580px] mt-[50px] m-auto">
       <img
