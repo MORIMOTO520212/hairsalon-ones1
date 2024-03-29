@@ -9,15 +9,15 @@ const homeData = await fetchHome();
     <div
       class="flex justify-center items-center w-[213px] h-[141px] rounded-br-[30px] bg-[#A86E49] z-10"
     >
-      <img class="w-[95%]" src="/images/logo-lg.png" />
+      <a href="/"><img class="w-[95%]" src="/images/logo-lg.png" /></a>
     </div>
     <div class="flex flex-1 justify-end">
       <ul class="flex flex-1 justify-around items-center w-full max-w-[400px]">
-        <li class="text-main px-1"><a href="#blog">Blog</a></li>
-        <li class="text-main px-1"><a href="#concept">Concept</a></li>
-        <li class="text-main px-1"><a href="#gallery">Gallery</a></li>
-        <li class="text-main px-1"><a href="#menu">Menu</a></li>
-        <li class="text-main px-1"><a href="#stylist">Stylist</a></li>
+        <li class="text-main px-1"><a href="/blog">Blog</a></li>
+        <li class="text-main px-1"><a href="/#concept">Concept</a></li>
+        <li class="text-main px-1"><a href="/#gallery">Gallery</a></li>
+        <li class="text-main px-1"><a href="/#menu">Menu</a></li>
+        <li class="text-main px-1"><a href="/#stylist">Stylist</a></li>
       </ul>
       <ul class="flex items-center">
         <li class="px-1">
@@ -39,7 +39,7 @@ const homeData = await fetchHome();
     <div
       class="flex justify-center items-center w-[213px] h-[141px] rounded-br-[30px] bg-[#A86E49] z-10"
     >
-      <img class="w-[95%]" src="/images/logo-lg.png" />
+      <a href="/"><img class="w-[95%]" src="/images/logo-lg.png" /></a>
     </div>
     <div class="flex items-center px-3">
       <input
@@ -74,11 +74,21 @@ const homeData = await fetchHome();
         class="fixed top-20 w-full text-center tracking-widest z-auto"
         :style="{ fontFamily: 'Jost, sans-serif;' }"
       >
-        <li class="text-2xl text-white py-6"><a href="">Blog</a></li>
-        <li class="text-2xl text-white py-6"><a href="">Concept</a></li>
-        <li class="text-2xl text-white py-6"><a href="">Menu</a></li>
-        <li class="text-2xl text-white py-6"><a href="">Gallery</a></li>
-        <li class="text-2xl text-white py-6"><a href="">Stylist</a></li>
+        <li class="text-2xl text-white py-6">
+          <a href="/blog" @click="navMenu = false">Blog</a>
+        </li>
+        <li class="text-2xl text-white py-6">
+          <a href="/#concept" @click="navMenu = false">Concept</a>
+        </li>
+        <li class="text-2xl text-white py-6">
+          <a href="/#menu" @click="navMenu = false">Menu</a>
+        </li>
+        <li class="text-2xl text-white py-6">
+          <a href="/#gallery" @click="navMenu = false">Gallery</a>
+        </li>
+        <li class="text-2xl text-white py-6">
+          <a href="/#stylist" @click="navMenu = false">Stylist</a>
+        </li>
         <li class="py-6"></li>
         <li class="py-3">
           <a :href="`tel:${homeData.access.tel}`"
