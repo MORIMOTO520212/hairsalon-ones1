@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { css } from '@emotion/css';
 const navMenu = ref(false);
-
-onUpdated(() => {
-  console.log(navMenu.value);
-});
+const homeData = await fetchHome();
 </script>
 
 <template>
@@ -23,9 +20,17 @@ onUpdated(() => {
         <li class="text-main px-1"><a href="#stylist">Stylist</a></li>
       </ul>
       <ul class="flex items-center">
-        <li class="px-1"><HeaderButton type="phone" /></li>
-        <li class="px-1"><HeaderButton type="web" /></li>
-        <li class="px-1"><HeaderButton type="line" /></li>
+        <li class="px-1">
+          <a :href="`tel:${homeData.access.tel}`"
+            ><HeaderButton type="phone"
+          /></a>
+        </li>
+        <li class="px-1">
+          <a :href="homeData.hotpepperUrl"><HeaderButton type="web" /></a>
+        </li>
+        <li class="px-1">
+          <a :href="homeData.lineUrl"><HeaderButton type="line" /></a>
+        </li>
       </ul>
     </div>
   </div>
@@ -75,9 +80,17 @@ onUpdated(() => {
         <li class="text-2xl text-white py-6"><a href="">Gallery</a></li>
         <li class="text-2xl text-white py-6"><a href="">Stylist</a></li>
         <li class="py-6"></li>
-        <li class="py-3"><HeaderButton type="phone" /></li>
-        <li class="py-3"><HeaderButton type="web" /></li>
-        <li class="py-3"><HeaderButton type="line" /></li>
+        <li class="py-3">
+          <a :href="`tel:${homeData.access.tel}`"
+            ><HeaderButton type="phone"
+          /></a>
+        </li>
+        <li class="py-3">
+          <a :href="homeData.hotpepperUrl"><HeaderButton type="web" /></a>
+        </li>
+        <li class="py-3">
+          <a :href="homeData.lineUrl"><HeaderButton type="line" /></a>
+        </li>
       </ul>
     </div>
   </div>
