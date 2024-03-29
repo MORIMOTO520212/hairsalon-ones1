@@ -1,3 +1,29 @@
+<script setup lang="ts">
+import { css } from '@emotion/css';
+
+const homeData = await fetchHome();
+const menuData = await fetchMenu();
+const blogListData = await fetchBlogList();
+const blogDate = new Date(blogListData?.contents[0].postAt ?? '');
+
+const styles = {
+  background: css`
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: no-repeat url('/images/mv.jpg');
+      background-size: cover;
+      background-position: cover;
+      filter: brightness(0.8);
+    }
+  `,
+};
+</script>
+
 <template>
   <div
     :class="`flex justify-center items-center relative w-full h-[750px] ${styles.background}`"
@@ -10,10 +36,10 @@
     <div class="flex items-center px-5 py-10">
       <img class="h-[66px]" src="/images/leaf1.svg" />
       <p
-        class="flex items-center text-center text-main px-5 sm:px-10"
+        class="flex items-center text-center text-main whitespace-pre-wrap px-5 sm:px-10"
         :style="{ fontFamily: 'Noto Serif JP, serif' }"
       >
-        女性スタイリストによるプライベートヘアサロン<br />天井が高く、木の香りが清々しいプライベート空間を貸切
+        {{ homeData.catchcopy }}
       </p>
       <img class="h-[66px] scale-x-[-1]" src="/images/leaf1.svg" />
     </div>
@@ -22,18 +48,26 @@
   <div id="blog" class="py-10">
     <SectionTitle value="Blog" />
     <div class="w-[250px] py-6 mx-auto">
-      <img class="w-[250px] h-[250px] object-cover" src="/images/dummy/1.jpg" />
-      <div>
-        <p
-          class="text-sm sm:text-base text-main py-2"
-          :style="{ fontFamily: 'Jost, sans-serif' }"
-        >
-          2024.03.02
-        </p>
-        <p class="text-sm sm:text-base text-main py-2">
-          ご新規のお客様へ。ご予約のとり方に関してのお知らせ
-        </p>
-      </div>
+      <a :href="`/post/${blogListData?.contents[0].id}`">
+        <img
+          class="w-[250px] h-[250px] object-cover"
+          :src="blogListData?.contents[0].thumbnail.url"
+        />
+        <div>
+          <p
+            class="text-sm sm:text-base text-main py-2"
+            :style="{ fontFamily: 'Jost, sans-serif' }"
+          >
+            {{
+              `${blogDate.getFullYear()}.${blogDate.getMonth()}.${blogDate.getDay()}`
+            }}
+          </p>
+          <p class="text-sm sm:text-base text-main py-2">
+            {{ blogListData?.contents[0].title }}
+          </p>
+        </div>
+      </a>
+
       <div class="flex justify-center">
         <a
           href="/blog"
@@ -53,7 +87,7 @@
     <div class="relative h-[555px] my-10">
       <img
         class="w-[95%] h-[270px] sm:w-[945px] sm:h-[495px] object-cover rounded-lg"
-        src="/images/DSC_0286.jpg"
+        :src="homeData.concept.concept1Image.url"
       />
       <div
         class="absolute bottom-0 right-0 lg:right-[10%] max-w-[550px] h-[300px] bg-[rgba(255,255,255,95%)] p-3 ms-4 sm:ms-0"
@@ -70,9 +104,9 @@
           </h2>
           <div class="flex items-center h-full">
             <p
-              class="text-[14px] md:text-[16px] text-main leading-9 tracking-[.25em]"
+              class="text-[14px] md:text-[16px] text-main whitespace-pre-wrap leading-9 tracking-[.25em]"
             >
-              高天井の隠れ家サロン。女性スタイリストによる貸し切りの贅沢空間で、あなただけの時間を豊かな木の香りと共に、あなたの理想を叶えるプライベートサロンを体験できます。
+              {{ homeData.concept.concept1Text }}
             </p>
           </div>
         </div>
@@ -83,7 +117,7 @@
     <div class="relative h-[510px] sm:h-[650px] my-10">
       <img
         class="absolute top-0 right-0 w-[80%] h-[270px] sm:w-[648px] sm:h-[490px] object-cover rounded-lg"
-        src="/images/DSC_0289.jpg"
+        :src="homeData.concept.concept2Image.url"
       />
       <div
         class="absolute bottom-0 left-0 lg:left-[10%] max-w-[550px] h-[300px] bg-[rgba(255,255,255,95%)] p-3 me-4 sm:me-0"
@@ -96,7 +130,7 @@
             <p
               class="text-[14px] md:text-[16px] text-main leading-9 tracking-[.25em]"
             >
-              確かな技術のベテランスタイリストがお客様に合わせたスタイルを提案し、初めての方にも安心してご利用いただけます。お気軽にお越しください。
+              {{ homeData.concept.concept2Text }}
             </p>
           </div>
         </div>
@@ -114,15 +148,15 @@
     <div class="flex justify-center mt-[50px]">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-7">
         <div
-          v-for="item in new Array(8)"
+          v-for="item in homeData.gallery"
           class="relative w-[150px] h-[150px] sm:w-[220px] sm:h-[220px]"
         >
           <span
             class="absolute top-[8px] left-[8px] w-full h-full bg-[#B3907A]"
           ></span>
           <img
-            class="absolute top-0 left-0 w-full h-full"
-            src="/images/dummy/1.jpg"
+            class="absolute top-0 left-0 w-full h-full object-cover"
+            :src="item.url"
           />
         </div>
       </div>
@@ -142,14 +176,16 @@
               </h2>
             </div>
             <div
-              v-for="item in new Array(4)"
+              v-for="{ name: name, price: price } in menuData?.contents.filter(
+                (x) => x.attr.includes('Cut Menu')
+              )"
               class="flex justify-between text-main px-3 py-3"
             >
               <p class="inline-block text-sm sm:text-base">
-                パーマ（カット・シャンプー・ブロー・トリートメント付）
+                {{ name }}
               </p>
               <span class="w-[50px]"></span>
-              <p class="inline-block text-sm sm:text-base">￥5,800</p>
+              <p class="inline-block text-sm sm:text-base">{{ price }}</p>
             </div>
           </div>
           <!--other menu-->
@@ -160,14 +196,16 @@
               </h2>
             </div>
             <div
-              v-for="item in new Array(4)"
+              v-for="{ name: name, price: price } in menuData?.contents.filter(
+                (x) => x.attr.includes('Other Menu')
+              )"
               class="flex justify-between text-main px-3 py-3"
             >
               <p class="inline-block text-sm sm:text-base">
-                パーマ（カット・シャンプー・ブロー・トリートメント付）
+                {{ name }}
               </p>
               <span class="w-[50px]"></span>
-              <p class="inline-block text-sm sm:text-base">￥5,800</p>
+              <p class="inline-block text-sm sm:text-base">{{ price }}</p>
             </div>
           </div>
         </div>
@@ -181,7 +219,7 @@
       <img
         class="absolute top-0 left-0 w-[350px] h-[350px] object-cover"
         :style="{ borderRadius: '40px 10px 10px 10px' }"
-        src="/images/staff.jpg"
+        :src="homeData.stylist.thumbnail.url"
       />
       <div
         class="absolute bottom-0 right-0 w-[360px] h-[380px] bg-[#F1EAE5] border border-[#503528] p-[25px]"
@@ -198,21 +236,21 @@
           <h3
             class="inline-block text-[#503528] text-[22px] tracking-[.18em] font-bold"
           >
-            鈴木 真理子
+            {{ homeData.stylist.nameJa }}
           </h3>
           <p
             class="inline-block text-[#503528]"
             :style="{ fontFamily: 'Jost, sans-serif' }"
           >
-            [ MARIKO SUZUKI ]
+            [ {{ homeData.stylist.nameEn }} ]
           </p>
         </div>
         <!--introduction-->
         <p class="text-[#503528] tracking-[.18em] my-5">
-          スタイリスト歴　20年以上
+          {{ homeData.stylist.headerText }}
         </p>
         <p class="text-[#503528] leading-[1.8rem] tracking-[.18em]">
-          美容室ワンズワンでは、お客様の髪への愛情を大切に、一人一人に合わせた丁寧なカウンセリングと高い技術力が評価されています。また、当店では店内の空間も楽しめるように設計しておりますので、お気軽にお越しください。
+          {{ homeData.stylist.bodyText }}
         </p>
       </div>
     </div>
@@ -232,7 +270,7 @@
             Address
           </h4>
           <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
-            〒194-0212 東京都町田市小山町９１６
+            {{ homeData.access.address }}
           </p>
         </div>
         <div class="flex py-3">
@@ -243,7 +281,7 @@
             Tel
           </h4>
           <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
-            042-797-3990
+            {{ homeData.access.tel }}
           </p>
         </div>
         <div class="flex py-3">
@@ -254,7 +292,7 @@
             Email
           </h4>
           <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
-            caobirei97@gmail.com
+            {{ homeData.access.email }}
           </p>
         </div>
       </div>
@@ -267,7 +305,7 @@
             Open
           </h4>
           <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
-            10:00〜19:00
+            {{ homeData.access.open }}
           </p>
         </div>
         <div class="flex py-3">
@@ -278,7 +316,7 @@
             Close
           </h4>
           <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
-            火曜日定休
+            {{ homeData.access.close }}
           </p>
         </div>
         <div class="flex py-3">
@@ -289,7 +327,7 @@
             Other
           </h4>
           <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
-            駐車場あり
+            {{ homeData.access.other }}
           </p>
         </div>
       </div>
@@ -303,24 +341,3 @@
     ></iframe>
   </div>
 </template>
-
-<script setup lang="ts">
-import { css } from '@emotion/css';
-
-const styles = {
-  background: css`
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: no-repeat url('/images/mv.jpg');
-      background-size: cover;
-      background-position: cover;
-      filter: brightness(0.8);
-    }
-  `,
-};
-</script>
