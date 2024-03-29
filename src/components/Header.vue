@@ -61,7 +61,7 @@ const homeData = await fetchHome();
     <div
       :class="`${
         navMenu ? 'visible opacity-100' : 'invisible opacity-0'
-      } fixed top-0 left-0 w-[100vw] h-[100vh]  bg-[#A86E49] transition ease-in-out duration-500 z-10`"
+      } fixed top-0 left-0 w-[100vw] h-[100vh]  bg-[#A86E49] transition-[opacity,visibility] ease-in-out duration-500 z-10`"
     >
       <span class="block fixed top-3 left-2 w-[220px]"
         ><img class="w-full" src="/images/flower1.svg"
