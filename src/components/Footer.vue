@@ -23,7 +23,7 @@ const homeData = await fetchHome();
           </div>
           <div class="">
             <p class="text-main mb-2">Reservation</p>
-            <a href="">
+            <a :href="`tel:${homeData.access.tel}`">
               <div class="flex items-center py-2">
                 <span
                   class="block w-[30px] h-[30px] border border-main"
@@ -34,7 +34,7 @@ const homeData = await fetchHome();
                 <p class="text-main ps-2">予約・お問い合せ</p>
               </div>
             </a>
-            <a href="">
+            <a :href="homeData.hotpepperUrl">
               <div class="flex items-center py-2">
                 <span
                   class="block w-[30px] h-[30px] border border-main"
@@ -45,7 +45,7 @@ const homeData = await fetchHome();
                 <p class="text-main ps-2">Webで予約する</p>
               </div>
             </a>
-            <a href="">
+            <a :href="homeData.lineUrl">
               <div class="flex items-center py-2">
                 <span
                   class="block w-[30px] h-[30px] border border-main"
