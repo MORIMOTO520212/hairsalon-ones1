@@ -13,7 +13,7 @@ const homeData = await fetchHome();
     </div>
     <div class="flex flex-1 justify-end">
       <ul class="flex flex-1 justify-around items-center w-full max-w-[400px]">
-        <li class="text-main px-1"><a href="/blog">Blog</a></li>
+        <li class="text-main px-1"><a href="/blog/1">Blog</a></li>
         <li class="text-main px-1"><a href="/#concept">Concept</a></li>
         <li class="text-main px-1"><a href="/#gallery">Gallery</a></li>
         <li class="text-main px-1"><a href="/#menu">Menu</a></li>
@@ -75,7 +75,7 @@ const homeData = await fetchHome();
         :style="{ fontFamily: 'Jost, sans-serif;' }"
       >
         <li class="text-2xl text-white py-6">
-          <a href="/blog" @click="navMenu = false">Blog</a>
+          <a href="/blog/1" @click="navMenu = false">Blog</a>
         </li>
         <li class="text-2xl text-white py-6">
           <a href="/#concept" @click="navMenu = false">Concept</a>

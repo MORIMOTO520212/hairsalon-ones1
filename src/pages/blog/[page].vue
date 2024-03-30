@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { css } from '@emotion/css';
 
+const blogListData = await fetchBlogList();
+
+const strftime = (date: string) => {
+  const d = new Date(date);
+  return `${d.getFullYear()}.${d.getMonth()}.${d.getDay()}`;
+};
+
+const pagination = (totalCount: string, currentPage: string) => {};
+
 const styles = {
   background: css`
     &::before {
@@ -35,15 +44,18 @@ const styles = {
     <div
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 p-[20px] mx-[20px] mt-[100px]"
     >
-      <div v-for="item in Array(6)" class="flex place-content-center">
+      <div
+        v-for="item in blogListData?.contents"
+        class="flex place-content-center"
+      >
         <a
-          href=""
+          :href="`/post/${item.id}`"
           class="w-[314px] h-[352px] flex flex-col bg-[#E5E0DD]"
           :style="{ boxShadow: '3px 3px 20px rgb(122,94,77,0.24)' }"
         >
           <img
             class="w-full h-[157px] object-cover"
-            src="/images/dummy/1.jpg"
+            :src="item.thumbnail.url"
           />
           <div
             class="flex-1 border border-dashed border-t-0 border-[#BA7B55] p-4 m-[20px] mt-0"
@@ -53,7 +65,7 @@ const styles = {
               class="text-main tracking-widest mb-3"
               :style="{ fontFamily: 'Jost, sans-serif' }"
             >
-              2024.02.15
+              {{ strftime(item.postAt) }}
             </p>
             <p
               class="text-main tracking-widest"
@@ -64,7 +76,7 @@ const styles = {
                 overflow: 'hidden',
               }"
             >
-              ここへ記事の内容を表示ここへ記事の内容を表示ここへ記事の内容を表示ここへ記事の内容を表示ここへ記事の内容を表示ここへ記事の内容を表示ここへ記事の内容を表示ここへ記事の内容を表示
+              {{ item.title }}
             </p>
           </div>
         </a>
@@ -72,29 +84,40 @@ const styles = {
     </div>
     <!--pagination-->
     <div class="flex justify-around w-[95%] sm:w-[400px] my-10 m-auto">
-      <span
-        class="grid place-content-center w-[50px] h-[50px] bg-[#A86E49] rounded-[50px] sm:me-10"
-        ><img class="" src="/icons/chevron.svg"
-      /></span>
-      <span
-        class="grid place-content-center w-[50px] h-[50px] text-[20px] text-white font-light bg-[#A86E49] rounded-[50px]"
-        :style="{ fontFamily: 'Jost, sans-serif' }"
-        >1</span
+      <a :href="`./${Number($route.params.page) - 1 || 1}`">
+        <span
+          class="grid place-content-center w-[50px] h-[50px] bg-[#A86E49] rounded-[50px] sm:me-10"
+          ><img class="" src="/icons/chevron.svg"
+        /></span>
+      </a>
+
+      <a href="./1"
+        ><span
+          class="grid place-content-center w-[50px] h-[50px] text-[20px] text-white font-light bg-[#A86E49] rounded-[50px]"
+          :style="{ fontFamily: 'Jost, sans-serif' }"
+          >1</span
+        ></a
       >
-      <span
-        class="grid place-content-center w-[50px] h-[50px] text-[20px] text-white font-light bg-[#A86E49] rounded-[50px]"
-        :style="{ fontFamily: 'Jost, sans-serif' }"
-        >2</span
-      >
-      <span
-        class="grid place-content-center w-[50px] h-[50px] text-[20px] text-white font-light bg-[#A86E49] rounded-[50px]"
-        :style="{ fontFamily: 'Jost, sans-serif' }"
-        >3</span
-      >
-      <span
-        class="grid place-content-center w-[50px] h-[50px] bg-[#A86E49] rounded-[50px] sm:ms-10"
-        ><img class="scale-x-[-1]" src="/icons/chevron.svg"
-      /></span>
+      <a href="">
+        <span
+          class="grid place-content-center w-[50px] h-[50px] text-[20px] text-white font-light bg-[#A86E49] rounded-[50px]"
+          :style="{ fontFamily: 'Jost, sans-serif' }"
+          >...</span
+        >
+      </a>
+      <a :href="`./${Number(blogListData?.totalCount) / 9 || 1}`">
+        <span
+          class="grid place-content-center w-[50px] h-[50px] text-[20px] text-white font-light bg-[#A86E49] rounded-[50px]"
+          :style="{ fontFamily: 'Jost, sans-serif' }"
+          >{{ blogListData?.totalCount }}</span
+        >
+      </a>
+      <a :href="`./${Number($route.params.page) + 1}`">
+        <span
+          class="grid place-content-center w-[50px] h-[50px] bg-[#A86E49] rounded-[50px] sm:ms-10"
+          ><img class="scale-x-[-1]" src="/icons/chevron.svg"
+        /></span>
+      </a>
     </div>
     <!--background-->
     <img class="absolute top-[-75px] left-0 -z-10" src="/images/flowers3.svg" />

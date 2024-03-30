@@ -70,7 +70,7 @@ const styles = {
 
       <div class="flex justify-center">
         <a
-          href="/blog"
+          href="/blog/1"
           class="inline-block border border-main text-main px-10 py-2 mt-3"
           :style="{
             fontFamily: 'Jost, sans-serif',
