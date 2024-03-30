@@ -2,6 +2,7 @@ import type {
   MicroCMSImage,
   MicroCMSDate,
   MicroCMSListResponse,
+  MicroCMSListContent,
 } from 'microcms-js-sdk';
 
 interface Concept {
@@ -56,6 +57,12 @@ interface BlogListItem {
 
 type Menu = MicroCMSListResponse<MenuItem>;
 type BlogList = MicroCMSListResponse<BlogListItem>;
+type BlogDetail = {
+  title: string;
+  postAt: string;
+  contents: string;
+  thumbnail: MicroCMSImage;
+} & MicroCMSListContent;
 
 export const fetchHome = async (): Promise<Settings> => {
   const res = await useMicroCMSGetObject({ endpoint: 'settings' });
@@ -84,4 +91,11 @@ export const fetchBlogList = async (): Promise<BlogList | null> => {
   return data;
 };
 
-export const fetchBlog = () => {};
+export const fetchBlog = async (contentId: string): Promise<BlogDetail> => {
+  const res = await useMicroCMSGetListDetail<BlogDetail>({
+    endpoint: 'blog',
+    contentId: contentId,
+  });
+  const data: BlogDetail = res.data.value;
+  return data;
+};

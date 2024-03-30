@@ -3,11 +3,6 @@ import { css } from '@emotion/css';
 
 const blogListData = await fetchBlogList();
 
-const strftime = (date: string) => {
-  const d = new Date(date);
-  return `${d.getFullYear()}.${d.getMonth()}.${d.getDay()}`;
-};
-
 const styles = {
   background: css`
     &::before {
