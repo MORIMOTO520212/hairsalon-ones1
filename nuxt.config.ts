@@ -12,5 +12,13 @@ export default defineNuxtConfig({
     apiKey: process.env.MICROCMS_API_KEY,
     target: 'all',
   },
-  modules: ['nuxt-microcms-module', '@nuxtjs/emotion', '@nuxtjs/tailwindcss'],
+  gtag: {
+    id: 'G-LC4BYHFP9R',
+  },
+  modules: [
+    'nuxt-microcms-module',
+    '@nuxtjs/emotion',
+    '@nuxtjs/tailwindcss',
+    'nuxt-gtag',
+  ],
 });
