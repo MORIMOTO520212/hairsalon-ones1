@@ -84,7 +84,7 @@ export const fetchBlogList = async (): Promise<BlogList | null> => {
     endpoint: 'blog',
     queries: {
       limit: 12,
-      orders: '-createdAt',
+      orders: '-postAt',
     },
   });
   const data: BlogList | null = res.data.value;

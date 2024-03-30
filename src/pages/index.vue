@@ -4,7 +4,7 @@ import { css } from '@emotion/css';
 const homeData = await fetchHome();
 const menuData = await fetchMenu();
 const blogListData = await fetchBlogList();
-const blogDate = new Date(blogListData?.contents[0].postAt ?? '');
+const blogDate = new Date(blogListData?.contents[0]?.postAt ?? '');
 
 const styles = {
   background: css`
@@ -15,7 +15,7 @@ const styles = {
       left: 0;
       right: 0;
       bottom: 0;
-      background: no-repeat url('/images/mv.jpg');
+      background: no-repeat url('/images/DSC_0307.webp');
       background-size: cover;
       background-position: cover;
       filter: brightness(0.8);
@@ -39,7 +39,7 @@ const styles = {
         class="flex items-center text-center text-main whitespace-pre-wrap px-5 sm:px-10"
         :style="{ fontFamily: 'Noto Serif JP, serif' }"
       >
-        {{ homeData.catchcopy }}
+        {{ homeData.catchcopy ?? '' }}
       </p>
       <img class="h-[66px] scale-x-[-1]" src="/images/leaf1.svg" />
     </div>
@@ -48,22 +48,20 @@ const styles = {
   <div id="blog" class="py-10">
     <SectionTitle value="Blog" />
     <div class="w-[250px] py-6 mx-auto">
-      <a :href="`/post/${blogListData?.contents[0].id}`">
+      <a :href="`/post/${blogListData?.contents[0]?.id ?? ''}`">
         <img
           class="w-[250px] h-[250px] object-cover"
-          :src="blogListData?.contents[0].thumbnail.url"
+          :src="blogListData?.contents[0]?.thumbnail.url ?? ''"
         />
         <div>
           <p
             class="text-sm sm:text-base text-main py-2"
             :style="{ fontFamily: 'Jost, sans-serif' }"
           >
-            {{
-              `${blogDate.getFullYear()}.${blogDate.getMonth()}.${blogDate.getDay()}`
-            }}
+            {{ strftime(blogListData?.contents[0]?.postAt ?? '') }}
           </p>
           <p class="text-sm sm:text-base text-main py-2">
-            {{ blogListData?.contents[0].title }}
+            {{ blogListData?.contents[0]?.title ?? '' }}
           </p>
         </div>
       </a>
@@ -87,7 +85,7 @@ const styles = {
     <div class="relative h-[555px] my-10">
       <img
         class="w-[95%] h-[270px] sm:w-[945px] sm:h-[495px] object-cover rounded-lg"
-        :src="homeData.concept.concept1Image.url"
+        :src="`${homeData.concept.concept1Image?.url}?w=2000` ?? ''"
       />
       <div
         class="absolute bottom-0 right-0 lg:right-[10%] max-w-[550px] h-[300px] bg-[rgba(255,255,255,95%)] p-3 ms-4 sm:ms-0"
@@ -106,7 +104,7 @@ const styles = {
             <p
               class="text-[14px] md:text-[16px] text-main whitespace-pre-wrap leading-9 tracking-[.25em]"
             >
-              {{ homeData.concept.concept1Text }}
+              {{ homeData.concept?.concept1Text ?? '' }}
             </p>
           </div>
         </div>
@@ -117,7 +115,7 @@ const styles = {
     <div class="relative h-[510px] sm:h-[650px] my-10">
       <img
         class="absolute top-0 right-0 w-[80%] h-[270px] sm:w-[648px] sm:h-[490px] object-cover rounded-lg"
-        :src="homeData.concept.concept2Image.url"
+        :src="`${homeData.concept.concept2Image?.url}?w=2000` ?? ''"
       />
       <div
         class="absolute bottom-0 left-0 lg:left-[10%] max-w-[550px] h-[300px] bg-[rgba(255,255,255,95%)] p-3 me-4 sm:me-0"
@@ -130,7 +128,7 @@ const styles = {
             <p
               class="text-[14px] md:text-[16px] text-main leading-9 tracking-[.25em]"
             >
-              {{ homeData.concept.concept2Text }}
+              {{ homeData.concept?.concept2Text ?? '' }}
             </p>
           </div>
         </div>
@@ -156,7 +154,7 @@ const styles = {
           ></span>
           <img
             class="absolute top-0 left-0 w-full h-full object-cover"
-            :src="item.url"
+            :src="`${item.url}?w=700`"
           />
         </div>
       </div>
@@ -219,7 +217,7 @@ const styles = {
       <img
         class="absolute top-0 left-0 w-[350px] h-[350px] object-cover"
         :style="{ borderRadius: '40px 10px 10px 10px' }"
-        :src="homeData.stylist.thumbnail.url"
+        :src="`${homeData.stylist.thumbnail?.url}?w=1200` ?? ''"
       />
       <div
         class="absolute bottom-0 right-0 w-[360px] h-[380px] bg-[#F1EAE5] border border-[#503528] p-[25px]"
@@ -236,21 +234,21 @@ const styles = {
           <h3
             class="inline-block text-[#503528] text-[22px] tracking-[.18em] font-bold"
           >
-            {{ homeData.stylist.nameJa }}
+            {{ homeData.stylist?.nameJa ?? '' }}
           </h3>
           <p
             class="inline-block text-[#503528]"
             :style="{ fontFamily: 'Jost, sans-serif' }"
           >
-            [ {{ homeData.stylist.nameEn }} ]
+            [ {{ homeData.stylist?.nameEn ?? '' }} ]
           </p>
         </div>
         <!--introduction-->
         <p class="text-[#503528] tracking-[.18em] my-5">
-          {{ homeData.stylist.headerText }}
+          {{ homeData.stylist?.headerText ?? '' }}
         </p>
         <p class="text-[#503528] leading-[1.8rem] tracking-[.18em]">
-          {{ homeData.stylist.bodyText }}
+          {{ homeData.stylist?.bodyText ?? '' }}
         </p>
       </div>
     </div>
@@ -270,7 +268,7 @@ const styles = {
             Address
           </h4>
           <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
-            {{ homeData.access.address }}
+            {{ homeData.access.address ?? '' }}
           </p>
         </div>
         <div class="flex py-3">
@@ -281,7 +279,7 @@ const styles = {
             Tel
           </h4>
           <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
-            {{ homeData.access.tel }}
+            {{ homeData.access.tel ?? '' }}
           </p>
         </div>
         <div class="flex py-3">
@@ -292,7 +290,7 @@ const styles = {
             Email
           </h4>
           <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
-            {{ homeData.access.email }}
+            {{ homeData.access.email ?? '' }}
           </p>
         </div>
       </div>
@@ -305,7 +303,7 @@ const styles = {
             Open
           </h4>
           <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
-            {{ homeData.access.open }}
+            {{ homeData.access.open ?? '' }}
           </p>
         </div>
         <div class="flex py-3">
@@ -316,7 +314,7 @@ const styles = {
             Close
           </h4>
           <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
-            {{ homeData.access.close }}
+            {{ homeData.access.close ?? '' }}
           </p>
         </div>
         <div class="flex py-3">
@@ -327,7 +325,7 @@ const styles = {
             Other
           </h4>
           <p class="flex-initial w-[70%] md:w-[80%] text-main tracking-widest">
-            {{ homeData.access.other }}
+            {{ homeData.access.other ?? '' }}
           </p>
         </div>
       </div>

@@ -21,15 +21,15 @@ const homeData = await fetchHome();
       </ul>
       <ul class="flex items-center">
         <li class="px-1">
-          <a :href="`tel:${homeData.access.tel}`"
+          <a :href="`tel:${homeData.access.tel ?? ''}`"
             ><HeaderButton type="phone"
           /></a>
         </li>
         <li class="px-1">
-          <a :href="homeData.hotpepperUrl"><HeaderButton type="web" /></a>
+          <a :href="homeData.hotpepperUrl ?? ''"><HeaderButton type="web" /></a>
         </li>
         <li class="px-1">
-          <a :href="homeData.lineUrl"><HeaderButton type="line" /></a>
+          <a :href="homeData.lineUrl ?? ''"><HeaderButton type="line" /></a>
         </li>
       </ul>
     </div>
@@ -91,15 +91,15 @@ const homeData = await fetchHome();
         </li>
         <li class="py-6"></li>
         <li class="py-3">
-          <a :href="`tel:${homeData.access.tel}`"
+          <a :href="`tel:${homeData.access.tel ?? ''}`"
             ><HeaderButton type="phone"
           /></a>
         </li>
         <li class="py-3">
-          <a :href="homeData.hotpepperUrl"><HeaderButton type="web" /></a>
+          <a :href="homeData.hotpepperUrl ?? ''"><HeaderButton type="web" /></a>
         </li>
         <li class="py-3">
-          <a :href="homeData.lineUrl"><HeaderButton type="line" /></a>
+          <a :href="homeData.lineUrl ?? ''"><HeaderButton type="line" /></a>
         </li>
       </ul>
     </div>

@@ -14,16 +14,17 @@ const homeData = await fetchHome();
       <div class="flex-initial w-full md:w-[60%]">
         <div class="flex flex-wrap justify-between py-6">
           <div class="mb-6">
-            <p class="text-main py-2">{{ homeData.access.address }}</p>
-            <p class="text-main py-2">{{ homeData.access.email }}</p>
-            <p class="text-main py-2">TEL: {{ homeData.access.tel }}</p>
+            <p class="text-main py-2">{{ homeData.access.address ?? '' }}</p>
+            <p class="text-main py-2">{{ homeData.access.email ?? '' }}</p>
+            <p class="text-main py-2">TEL: {{ homeData.access.tel ?? '' }}</p>
             <p class="text-main py-2">
-              営業時間: {{ homeData.access.open }} {{ homeData.access.close }}
+              営業時間: {{ homeData.access.open ?? '' }}
+              {{ homeData.access.close ?? '' }}
             </p>
           </div>
           <div class="">
             <p class="text-main mb-2">Reservation</p>
-            <a :href="`tel:${homeData.access.tel}`">
+            <a :href="`tel:${homeData.access.tel ?? ''}`">
               <div class="flex items-center py-2">
                 <span
                   class="block w-[30px] h-[30px] border border-main"
@@ -34,7 +35,7 @@ const homeData = await fetchHome();
                 <p class="text-main ps-2">予約・お問い合せ</p>
               </div>
             </a>
-            <a :href="homeData.hotpepperUrl">
+            <a :href="homeData.hotpepperUrl ?? ''">
               <div class="flex items-center py-2">
                 <span
                   class="block w-[30px] h-[30px] border border-main"
@@ -45,7 +46,7 @@ const homeData = await fetchHome();
                 <p class="text-main ps-2">Webで予約する</p>
               </div>
             </a>
-            <a :href="homeData.lineUrl">
+            <a :href="homeData.lineUrl ?? ''">
               <div class="flex items-center py-2">
                 <span
                   class="block w-[30px] h-[30px] border border-main"
