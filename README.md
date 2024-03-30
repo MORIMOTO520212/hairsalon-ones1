@@ -1,4 +1,4 @@
-# Nuxt 3 Minimal Starter
+# ONE'S 1 美容室ワンズワン
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
