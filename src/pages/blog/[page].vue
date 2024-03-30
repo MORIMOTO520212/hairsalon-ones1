@@ -8,8 +8,6 @@ const strftime = (date: string) => {
   return `${d.getFullYear()}.${d.getMonth()}.${d.getDay()}`;
 };
 
-const pagination = (totalCount: string, currentPage: string) => {};
-
 const styles = {
   background: css`
     &::before {
