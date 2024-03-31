@@ -20,5 +20,6 @@ export default defineNuxtConfig({
     '@nuxtjs/emotion',
     '@nuxtjs/tailwindcss',
     'nuxt-gtag',
+    '@hypernym/nuxt-gsap',
   ],
 });
