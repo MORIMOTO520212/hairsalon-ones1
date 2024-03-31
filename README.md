@@ -1,5 +1,11 @@
 # ONE'S 1 美容室ワンズワン
 
+## 依存関係
+
+- tailwindcss
+- [nuxt-gsap](https://github.com/hypernym-studio/nuxt-gsap)
+- nuxt-gtag
+
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup
