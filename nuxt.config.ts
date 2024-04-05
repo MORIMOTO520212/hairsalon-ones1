@@ -15,6 +15,11 @@ export default defineNuxtConfig({
   gtag: {
     id: 'G-LC4BYHFP9R',
   },
+  gsap: {
+    extraPlugins: {
+      scrollTrigger: true,
+    },
+  },
   modules: [
     'nuxt-microcms-module',
     '@nuxtjs/emotion',

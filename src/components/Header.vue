@@ -72,7 +72,7 @@ const homeData = await fetchHome();
 
       <ul
         class="fixed top-20 w-full text-center tracking-widest z-auto"
-        :style="{ fontFamily: 'Jost, sans-serif;' }"
+        :style="{ fontFamily: 'Jost, sans-serif' }"
       >
         <li class="text-2xl text-white py-6">
           <a href="/blog/1" @click="navMenu = false">Blog</a>

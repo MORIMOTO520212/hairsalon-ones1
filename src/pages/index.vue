@@ -4,7 +4,58 @@ import { css } from '@emotion/css';
 const homeData = await fetchHome();
 const menuData = await fetchMenu();
 const blogListData = await fetchBlogList();
-const blogDate = new Date(blogListData?.contents[0]?.postAt ?? '');
+
+const { $gsap } = useNuxtApp();
+
+const conceptAnimation = (target: string, x: string, duration: number) => {
+  $gsap.from(target, {
+    scrollTrigger: {
+      trigger: target,
+      start: 'top center',
+    },
+    opacity: 0,
+    x: x,
+    duration: duration,
+  });
+};
+
+const galleryAnimation = (target: string, y: string, duration: number) => {
+  $gsap.from(target, {
+    scrollTrigger: {
+      trigger: target,
+      start: 'top bottom',
+    },
+    opacity: 0,
+    y: y,
+    duration: duration,
+    stagger: 0.1,
+  });
+};
+
+const stylistAnimation = (target: string, x: string) => {
+  $gsap.from(target, {
+    scrollTrigger: {
+      trigger: target,
+      start: 'top bottom',
+    },
+    opacity: 0,
+    x: x,
+    duration: 1,
+  });
+};
+
+// animation
+onMounted(() => {
+  conceptAnimation('#concept1img', '-50px', 1);
+  conceptAnimation('#concept1text', '50px', 1);
+  conceptAnimation('#concept2img', '50px', 1);
+  conceptAnimation('#concept2text', '-50px', 1);
+
+  galleryAnimation('.gallery-card', '-10px', 1);
+
+  stylistAnimation('#stylistImg', '-50px');
+  stylistAnimation('#stylistText', '50px');
+});
 
 const styles = {
   background: css`
@@ -29,7 +80,7 @@ const styles = {
     :class="`flex justify-center items-center relative w-full h-[750px] ${styles.background}`"
   >
     <img class="absolute w-[98%] h-[98%]" src="/images/mv-border.svg" />
-    <img class="absolute w-[520px]" src="/images/logo-lg.png" />
+    <img class="title absolute w-[520px]" src="/images/logo-lg.png" />
   </div>
   <!--catchcopy-->
   <div class="flex justify-center w-full bg-[#DDD3C3]">
@@ -84,10 +135,12 @@ const styles = {
     <!--concept 1-->
     <div class="relative h-[555px] my-10">
       <img
+        id="concept1img"
         class="w-[95%] h-[270px] sm:w-[945px] sm:h-[495px] object-cover rounded-lg"
         :src="`${homeData.concept.concept1Image?.url}?w=2000` ?? ''"
       />
       <div
+        id="concept1text"
         class="absolute bottom-0 right-0 lg:right-[10%] max-w-[550px] h-[300px] bg-[rgba(255,255,255,95%)] p-3 ms-4 sm:ms-0"
       >
         <div
@@ -114,10 +167,12 @@ const styles = {
     <!--concept 2-->
     <div class="relative h-[510px] sm:h-[650px] my-10">
       <img
+        id="concept2img"
         class="absolute top-0 right-0 w-[80%] h-[270px] sm:w-[648px] sm:h-[490px] object-cover rounded-lg"
         :src="`${homeData.concept.concept2Image?.url}?w=2000` ?? ''"
       />
       <div
+        id="concept2text"
         class="absolute bottom-0 left-0 lg:left-[10%] max-w-[550px] h-[300px] bg-[rgba(255,255,255,95%)] p-3 me-4 sm:me-0"
       >
         <div
@@ -147,7 +202,7 @@ const styles = {
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-7">
         <div
           v-for="item in homeData.gallery"
-          class="relative w-[150px] h-[150px] sm:w-[220px] sm:h-[220px]"
+          class="gallery-card relative w-[150px] h-[150px] sm:w-[220px] sm:h-[220px]"
         >
           <span
             class="absolute top-[8px] left-[8px] w-full h-full bg-[#B3907A]"
@@ -215,11 +270,13 @@ const styles = {
     <SectionTitle value="Stylist" />
     <div class="relative max-w-[800px] h-[700px] sm:h-[580px] mt-[50px] m-auto">
       <img
+        id="stylistImg"
         class="absolute top-0 left-0 w-[350px] h-[350px] object-cover"
         :style="{ borderRadius: '40px 10px 10px 10px' }"
         :src="`${homeData.stylist.thumbnail?.url}?w=1200` ?? ''"
       />
       <div
+        id="stylistText"
         class="absolute bottom-0 right-0 w-[360px] h-[380px] bg-[#F1EAE5] border border-[#503528] p-[25px]"
         :style="{ borderRadius: '10px 40px 10px 10px' }"
       >
