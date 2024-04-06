@@ -273,11 +273,8 @@ const styles = {
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <!--cut menu-->
           <div class="max-w-[470px]">
-            <div class="bg-[#DED5D0] px-5 py-2 mb-5">
-              <h2
-                class="menu-card text-main"
-                :style="{ fontFamily: 'Jost, sans-serif' }"
-              >
+            <div class="menu-card bg-[#DED5D0] px-5 py-2 mb-5">
+              <h2 class="text-main" :style="{ fontFamily: 'Jost, sans-serif' }">
                 Cut Menu（シャンプー・ブロー付き）
               </h2>
             </div>
@@ -296,7 +293,7 @@ const styles = {
           </div>
           <!--other menu-->
           <div class="max-w-[470px]">
-            <div class="bg-[#DED5D0] px-5 py-2 mb-5">
+            <div class="menu-card bg-[#DED5D0] px-5 py-2 mb-5">
               <h2
                 class="menu-card text-main"
                 :style="{ fontFamily: 'Jost, sans-serif' }"
