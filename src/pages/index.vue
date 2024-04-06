@@ -181,7 +181,7 @@ const styles = {
     </div>
   </div>
   <!--concept-->
-  <div id="concept" class="relative py-[80px]">
+  <div id="concept" class="relative py-[80px] overflow-hidden">
     <!--concept 1-->
     <div class="relative h-[555px] my-10">
       <img
@@ -319,7 +319,7 @@ const styles = {
     </div>
   </div>
   <!--stylist-->
-  <div id="stylist" class="bg-[#F1EAE5] py-[80px]">
+  <div id="stylist" class="bg-[#F1EAE5] overflow-hidden py-[80px]">
     <SectionTitle :props="{ id: 'stylistTitle', value: 'Stylist' }" />
     <div class="relative max-w-[800px] h-[700px] sm:h-[580px] mt-[50px] m-auto">
       <img
