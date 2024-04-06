@@ -113,7 +113,7 @@ const styles = {
       left: 0;
       right: 0;
       bottom: 0;
-      background: no-repeat url('/images/DSC_0307.webp');
+      background: no-repeat url('/images/mv3.jpg');
       background-size: cover;
       background-position: cover;
       filter: brightness(0.8);
