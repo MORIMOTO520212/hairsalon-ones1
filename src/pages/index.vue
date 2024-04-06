@@ -7,37 +7,77 @@ const blogListData = await fetchBlogList();
 
 const { $gsap } = useNuxtApp();
 
+const scrollTrigger = (target: string, start: string) => {
+  return { trigger: target, start: start };
+};
+
+const firstViewAnimation = () => {
+  const baseOptions = {
+    opacity: 0,
+    duration: 1,
+  };
+  $gsap.from('.fv-bg', {
+    delay: 0.5,
+    ease: 'power1.out',
+    ...baseOptions,
+  });
+  $gsap.from('.fv-logo', {
+    delay: 1.5,
+    ease: 'power1.out',
+    ...baseOptions,
+  });
+  $gsap.from('.fv-border', {
+    delay: 2.5,
+    ease: 'power1.out',
+    ...baseOptions,
+  });
+};
+
+const titleAnimation = (target: string) => {
+  $gsap.from(target, {
+    scrollTrigger: scrollTrigger(target, 'center bottom'),
+    opacity: 0,
+    y: '10px',
+    duration: 1,
+    delay: 0.5,
+  });
+};
+
 const conceptAnimation = (target: string, x: string, duration: number) => {
   $gsap.from(target, {
-    scrollTrigger: {
-      trigger: target,
-      start: 'top center',
-    },
+    scrollTrigger: scrollTrigger(target, 'top bottom'),
     opacity: 0,
     x: x,
     duration: duration,
+    delay: 0.5,
   });
 };
 
 const galleryAnimation = (target: string, y: string, duration: number) => {
   $gsap.from(target, {
-    scrollTrigger: {
-      trigger: target,
-      start: 'top bottom',
-    },
+    scrollTrigger: scrollTrigger(target, 'top bottom'),
     opacity: 0,
     y: y,
     duration: duration,
+    delay: 0.5,
+    stagger: 0.1,
+  });
+};
+
+const menuAnimation = (target: string) => {
+  $gsap.from(target, {
+    scrollTrigger: scrollTrigger(target, 'top bottom'),
+    opacity: 0,
+    y: '10px',
+    duration: 1,
+    delay: 0.5,
     stagger: 0.1,
   });
 };
 
 const stylistAnimation = (target: string, x: string) => {
   $gsap.from(target, {
-    scrollTrigger: {
-      trigger: target,
-      start: 'top bottom',
-    },
+    scrollTrigger: scrollTrigger(target, 'top bottom'),
     opacity: 0,
     x: x,
     duration: 1,
@@ -46,12 +86,19 @@ const stylistAnimation = (target: string, x: string) => {
 
 // animation
 onMounted(() => {
+  // first view
+  firstViewAnimation();
+  // title
+  titleAnimation('#blogTitle');
+  // concept
   conceptAnimation('#concept1img', '-50px', 1);
   conceptAnimation('#concept1text', '50px', 1);
   conceptAnimation('#concept2img', '50px', 1);
   conceptAnimation('#concept2text', '-50px', 1);
-
+  // gallery
   galleryAnimation('.gallery-card', '-10px', 1);
+  // menu
+  menuAnimation('.menu-card');
 
   stylistAnimation('#stylistImg', '-50px');
   stylistAnimation('#stylistText', '50px');
@@ -77,10 +124,13 @@ const styles = {
 
 <template>
   <div
-    :class="`flex justify-center items-center relative w-full h-[750px] ${styles.background}`"
+    :class="`fv-bg flex justify-center items-center relative w-full h-[750px] ${styles.background}`"
   >
-    <img class="absolute w-[98%] h-[98%]" src="/images/mv-border.svg" />
-    <img class="title absolute w-[520px]" src="/images/logo-lg.png" />
+    <img
+      class="fv-border absolute w-[98%] h-[98%]"
+      src="/images/mv-border.svg"
+    />
+    <img class="fv-logo title absolute w-[520px]" src="/images/logo-lg.png" />
   </div>
   <!--catchcopy-->
   <div class="flex justify-center w-full bg-[#DDD3C3]">
@@ -97,7 +147,7 @@ const styles = {
   </div>
   <!--blog-->
   <div id="blog" class="py-10">
-    <SectionTitle value="Blog" />
+    <SectionTitle :props="{ id: 'blogTitle', value: 'Blog' }" />
     <div class="w-[250px] py-6 mx-auto">
       <a :href="`/post/${blogListData?.contents[0]?.id ?? ''}`">
         <img
@@ -197,7 +247,7 @@ const styles = {
   </div>
   <!--gallery-->
   <div id="gallery" class="bg-[#F1EAE5] px-[10px] sm:px-[50px] py-[80px]">
-    <SectionTitle value="Gallery" />
+    <SectionTitle :props="{ id: 'galleryTitle', value: 'Gallery' }" />
     <div class="flex justify-center mt-[50px]">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-7">
         <div
@@ -217,14 +267,17 @@ const styles = {
   </div>
   <!--menu-->
   <div id="menu" class="py-[80px]">
-    <SectionTitle value="Menu" />
+    <SectionTitle :props="{ id: 'menuTitle', value: 'Menu' }" />
     <div class="flex justify-center mt-[50px]">
       <div class="inline-block">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <!--cut menu-->
           <div class="max-w-[470px]">
             <div class="bg-[#DED5D0] px-5 py-2 mb-5">
-              <h2 class="text-main" :style="{ fontFamily: 'Jost, sans-serif' }">
+              <h2
+                class="menu-card text-main"
+                :style="{ fontFamily: 'Jost, sans-serif' }"
+              >
                 Cut Menu（シャンプー・ブロー付き）
               </h2>
             </div>
@@ -232,7 +285,7 @@ const styles = {
               v-for="{ name: name, price: price } in menuData?.contents.filter(
                 (x) => x.attr.includes('Cut Menu')
               )"
-              class="flex justify-between text-main px-3 py-3"
+              class="menu-card flex justify-between text-main px-3 py-3"
             >
               <p class="inline-block text-sm sm:text-base">
                 {{ name }}
@@ -244,7 +297,10 @@ const styles = {
           <!--other menu-->
           <div class="max-w-[470px]">
             <div class="bg-[#DED5D0] px-5 py-2 mb-5">
-              <h2 class="text-main" :style="{ fontFamily: 'Jost, sans-serif' }">
+              <h2
+                class="menu-card text-main"
+                :style="{ fontFamily: 'Jost, sans-serif' }"
+              >
                 Other Menu
               </h2>
             </div>
@@ -252,7 +308,7 @@ const styles = {
               v-for="{ name: name, price: price } in menuData?.contents.filter(
                 (x) => x.attr.includes('Other Menu')
               )"
-              class="flex justify-between text-main px-3 py-3"
+              class="menu-card flex justify-between text-main px-3 py-3"
             >
               <p class="inline-block text-sm sm:text-base">
                 {{ name }}
@@ -267,7 +323,7 @@ const styles = {
   </div>
   <!--stylist-->
   <div id="stylist" class="bg-[#F1EAE5] py-[80px]">
-    <SectionTitle value="Stylist" />
+    <SectionTitle :props="{ id: 'stylistTitle', value: 'Stylist' }" />
     <div class="relative max-w-[800px] h-[700px] sm:h-[580px] mt-[50px] m-auto">
       <img
         id="stylistImg"
@@ -312,7 +368,7 @@ const styles = {
   </div>
   <!--access-->
   <div class="py-[80px]">
-    <SectionTitle value="Access" />
+    <SectionTitle :props="{ id: 'accessTitle', value: 'Access' }" />
     <div
       class="block md:flex max-w-[980px] border border-[#503528] p-[20px] mt-[40px] ms-3 me-3 md:ms-auto md:me-auto"
     >
