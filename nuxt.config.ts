@@ -6,6 +6,16 @@ export default defineNuxtConfig({
   devServer: {
     port: 3000,
   },
+  app: {
+    head: {
+      meta: [
+        {
+          name: 'google-site-verification',
+          content: 'niHSaLlrT6Vi3JwIR-7Rcr_c67zZ8GA8Bcl3NWP9hzI',
+        },
+      ],
+    },
+  },
   tailwindcss: {},
   microCMS: {
     serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
