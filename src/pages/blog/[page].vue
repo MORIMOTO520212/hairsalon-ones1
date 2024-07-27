@@ -48,7 +48,7 @@ const styles = {
         >
           <NuxtImg
             class="w-full h-[157px] object-cover"
-            :src="item.thumbnail.url + '?w=500'"
+            :src="`${item.thumbnail.url}?w=500`"
             quality="60"
             alt="ブログサムネイル画像"
           />

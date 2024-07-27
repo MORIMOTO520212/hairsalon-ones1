@@ -157,7 +157,7 @@ const styles = {
       <a :href="`/post/${blogListData?.contents[0]?.id ?? ''}`">
         <img
           class="w-[250px] h-[250px] object-cover"
-          :src="blogListData?.contents[0]?.thumbnail.url ?? ''"
+          :src="`${blogListData?.contents[0]?.thumbnail.url}?w=500`"
           loading="lazy"
           alt="ブログのサムネイル画像"
         />
@@ -194,7 +194,7 @@ const styles = {
       <img
         id="concept1img"
         class="w-[95%] h-[270px] sm:w-[945px] sm:h-[495px] object-cover rounded-lg"
-        :src="`${homeData.concept.concept1Image?.url}?w=2000` ?? ''"
+        :src="`${homeData.concept.concept1Image?.url}?w=2000`"
         loading="lazy"
         alt="コンセプト画像１"
       />
@@ -228,7 +228,7 @@ const styles = {
       <img
         id="concept2img"
         class="absolute top-0 right-0 w-[80%] h-[270px] sm:w-[648px] sm:h-[490px] object-cover rounded-lg"
-        :src="`${homeData.concept.concept2Image?.url}?w=2000` ?? ''"
+        :src="`${homeData.concept.concept2Image?.url}?w=2000`"
         loading="lazy"
         alt="コンセプト画像２"
       />
@@ -271,7 +271,7 @@ const styles = {
           ></span>
           <img
             class="absolute top-0 left-0 w-full h-full object-cover"
-            :src="`${item.url}?w=700`"
+            :src="`${item.url}?w=500`"
             loading="lazy"
             alt="ギャラリー画像"
           />
@@ -340,7 +340,7 @@ const styles = {
         id="stylistImg"
         class="absolute top-0 left-0 w-[350px] h-[350px] object-cover"
         :style="{ borderRadius: '40px 10px 10px 10px' }"
-        :src="`${homeData.stylist.thumbnail?.url}?w=1200` ?? ''"
+        :src="`${homeData.stylist.thumbnail?.url}?w=1200`"
         loading="lazy"
         alt="スタイリスト画像"
       />
