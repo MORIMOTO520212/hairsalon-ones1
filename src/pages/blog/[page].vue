@@ -46,9 +46,11 @@ const styles = {
           class="w-[314px] h-[352px] flex flex-col bg-[#E5E0DD]"
           :style="{ boxShadow: '3px 3px 20px rgb(122,94,77,0.24)' }"
         >
-          <img
+          <NuxtImg
             class="w-full h-[157px] object-cover"
-            :src="item.thumbnail.url"
+            :src="item.thumbnail.url + '?w=500'"
+            quality="60"
+            alt="ブログサムネイル画像"
           />
           <div
             class="flex-1 border border-dashed border-t-0 border-[#BA7B55] p-4 m-[20px] mt-0"
