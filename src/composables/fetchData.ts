@@ -79,12 +79,16 @@ export const fetchMenu = async (): Promise<Menu | null> => {
   return data;
 };
 
-export const fetchBlogList = async (): Promise<BlogList | null> => {
+export const fetchBlogList = async (queryOptions: {
+  blogsPerPage: number;
+  offset: number;
+}): Promise<BlogList | null> => {
   const res = await useMicroCMSGetList<BlogListItem>({
     endpoint: 'blog',
     queries: {
-      limit: 12,
+      limit: queryOptions.blogsPerPage ?? 12,
       orders: '-postAt',
+      offset: queryOptions.offset ?? 0,
     },
   });
   const data: BlogList | null = res.data.value;

@@ -1,7 +1,16 @@
 <script setup lang="ts">
 import { css } from '@emotion/css';
 
-const blogListData = await fetchBlogList();
+const route = useRoute();
+
+const blogsPerPage = 12;
+const currentPage =
+  Number(route.params.page) >= 1 ? Number(route.params.page) : 1;
+
+const blogListData = await fetchBlogList({
+  blogsPerPage: blogsPerPage,
+  offset: (currentPage - 1) * 12,
+});
 
 const styles = {
   background: css`
@@ -85,7 +94,6 @@ const styles = {
           ><img class="" src="/icons/chevron.svg"
         /></span>
       </a>
-
       <a href="./1"
         ><span
           class="grid place-content-center w-[50px] h-[50px] text-[20px] text-white font-light bg-[#A86E49] rounded-[50px]"
@@ -93,18 +101,18 @@ const styles = {
           >1</span
         ></a
       >
+      <a :href="`./${Number($route.params.page) + 1}`">
+        <span
+          class="grid place-content-center w-[50px] h-[50px] text-[20px] text-white font-light bg-[#A86E49] rounded-[50px]"
+          :style="{ fontFamily: 'Jost, sans-serif' }"
+          >{{ Number($route.params.page) + 1 }}</span
+        >
+      </a>
       <a href="">
         <span
           class="grid place-content-center w-[50px] h-[50px] text-[20px] text-white font-light bg-[#A86E49] rounded-[50px]"
           :style="{ fontFamily: 'Jost, sans-serif' }"
           >...</span
-        >
-      </a>
-      <a :href="`./${Number(blogListData?.totalCount) / 9 || 1}`">
-        <span
-          class="grid place-content-center w-[50px] h-[50px] text-[20px] text-white font-light bg-[#A86E49] rounded-[50px]"
-          :style="{ fontFamily: 'Jost, sans-serif' }"
-          >{{ blogListData?.totalCount }}</span
         >
       </a>
       <a :href="`./${Number($route.params.page) + 1}`">
