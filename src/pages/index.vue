@@ -3,7 +3,10 @@ import { css } from '@emotion/css';
 
 const homeData = await fetchHome();
 const menuData = await fetchMenu();
-const blogListData = await fetchBlogList();
+const blogListData = await fetchBlogList({
+  blogsPerPage: 1,
+  offset: 0,
+});
 
 const { $gsap } = useNuxtApp();
 
