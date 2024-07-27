@@ -36,5 +36,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'nuxt-gtag',
     '@hypernym/nuxt-gsap',
+    "@nuxt/image"
   ],
 });
